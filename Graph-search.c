@@ -38,7 +38,7 @@ int deQueue();
 void enQueue(int v);
 
 
-void initializeGraph(graphType* Graph);		 											// 그래프 생성
+graphType* initializeGraph(graphType* Graph);		 											// 그래프 생성
 void freeGraph(graphType* Graph);                    									//그래프 동적할당 해제
 void insertVertex(graphType* Graph, int vertex);                     										//정점삽입
 void insertEdge(graphType* Graph, int front, int rear);    								//두 정점의 연결
@@ -117,7 +117,7 @@ int main()
 
 	return 1;
 }
-void initializeGraph(graphType* Graph)
+graphType* initializeGraph(graphType* Graph)
 {
 	int i;														// 반복문을 돌릴 변수
 	if (Graph != NULL)
@@ -130,8 +130,9 @@ void initializeGraph(graphType* Graph)
 		Graph->adjList[i] = NULL;								// NULL로 초기화
 		Graph->visited[i] = FALSE;								// 방문을 안했기 떄문에 0으로 초기화  // 방문하면 1
 	}
-
+	return Graph;
 }
+
 void insertVertex(graphType* Graph, int vertex)
 {
 	if (vertex < 0 || vertex > 9) {		//0~9값이 아니면 오류문구 출력
